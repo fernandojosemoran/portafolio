@@ -6,9 +6,11 @@ import LinkButton from "./LinkButton.astro";
 import React from "./icons/React.astro";
 import Django from "./icons/Django.astro";
 import NextJS from "./icons/NextJS.astro";
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Angular from "./icons/Angular.astro";
 import AngularMaterial from "./icons/AngularMaterial.astro";
+import Express from "./icons/Express.astro";
+import SpringBoot from "./icons/SpringBoot.astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 interface ITags {
   REACT: ITagsProperties;
@@ -17,6 +19,8 @@ interface ITags {
   NEXT: ITagsProperties;
   ANGULAR: ITagsProperties;
   ANGULAR_MATERIAL: ITagsProperties;
+  EXPRESS: ITagsProperties;
+  SPRING_BOOT: ITagsProperties;
 }
 
 interface ITagsProperties {
@@ -65,6 +69,16 @@ const TAGS: ITags = {
     class: "bg-[#0e6969] text-white",
     icon: AngularMaterial,
   },
+  EXPRESS: {
+    name: "Express",
+    class: "bg-green-800 text-white",
+    icon: Express,
+  },
+  SPRING_BOOT: {
+    name: "Spring Boot",
+    class: "bg-green-800 text-white",
+    icon: SpringBoot,
+  },
 };
 
 const PROJECTS: IProjects[] = [
@@ -93,7 +107,7 @@ const PROJECTS: IProjects[] = [
     link: "https://hero-app-with-mean-stack.onrender.com/",
     github: "https://github.com/fernandojosemoran/HeroesApp-Angular",
     image: "./heroes-app.webp",
-    tags: [TAGS.ANGULAR, TAGS.ANGULAR_MATERIAL],
+    tags: [TAGS.ANGULAR, TAGS.ANGULAR_MATERIAL, TAGS.EXPRESS],
   },
   {
     title: "Sistema de inventario",
@@ -101,8 +115,8 @@ const PROJECTS: IProjects[] = [
       "SIM Simplified Inventory Management is an application designed for easy and organized product inventory management.",
     link: "https://simplified-inventory-management.vercel.app/",
     github: "https://github.com/fernandojosemoran/inventory-angular-project",
-    image: "./heroes-app.webp",
-    tags: [TAGS.ANGULAR, TAGS.ANGULAR_MATERIAL],
+    image: "./sim.webp",
+    tags: [TAGS.ANGULAR, TAGS.SPRING_BOOT],
   },
 ];
 ---
