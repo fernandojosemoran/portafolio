@@ -10,6 +10,15 @@ import Angular from "./icons/Angular.astro";
 import AngularMaterial from "./icons/AngularMaterial.astro";
 import Express from "./icons/Express.astro";
 import SpringBoot from "./icons/SpringBoot.astro";
+import GoogleCloudPlatform from "./icons/GoogleCloudPlatform.astro";
+import Nginx from "./icons/Nginx.astro";
+import CloudFlare from "./icons/CloudFlare.astro";
+import Azure from "./icons/Azure.astro";
+import Aws from "./icons/Aws.astro";
+import JestTesting from "./icons/JestTesting.astro";
+
+import Env from "../shared/constants/environments";
+
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 interface ITags {
@@ -21,6 +30,12 @@ interface ITags {
   ANGULAR_MATERIAL: ITagsProperties;
   EXPRESS: ITagsProperties;
   SPRING_BOOT: ITagsProperties;
+  GOOGLE_CLOUD_PLATFORM: ITagsProperties;
+  NGINX: ITagsProperties;
+  CLOUD_FLARE: ITagsProperties;
+  AZURE: ITagsProperties;
+  AWS: ITagsProperties;
+  JEST_TESTING: ITagsProperties;
 }
 
 interface ITagsProperties {
@@ -79,7 +94,43 @@ const TAGS: ITags = {
     class: "bg-green-800 text-white",
     icon: SpringBoot,
   },
+  GOOGLE_CLOUD_PLATFORM: {
+    name: "Google Cloud",
+    class: "bg-[#003159] text-white",
+    icon: GoogleCloudPlatform,
+  },
+  NGINX: {
+    name: "Nginx",
+    class: "bg-green-800 text-white",
+    icon: Nginx,
+  },
+  CLOUD_FLARE: {
+    name: "Cloud Flare",
+    class: "bg-[#f9be6b] text-white",
+    icon: CloudFlare,
+  },
+  AZURE: {
+    name: "Azure VM",
+    class: "bg-[#003159] text-white",
+    icon: Azure,
+  },
+  AWS: {
+    name: "AWS EC2",
+    class: "bg-[#f9be6b] text-white",
+    icon: Aws,
+  },
+  JEST_TESTING: {
+    name: "Jest Testing",
+    class: "bg-[#c96665] text-white",
+    icon: JestTesting,
+  },
 };
+
+function detectedProxy(proxyWeb: string, proxyRender: string): string {
+  return Env.PROXY === "WEB" ? proxyWeb : proxyRender;
+}
+
+//marketing-agency-backend.buzz
 
 const PROJECTS: IProjects[] = [
   {
@@ -89,7 +140,7 @@ const PROJECTS: IProjects[] = [
     link: "https://palette-generator-indol.vercel.app/",
     github: "https://github.com/fernandojosemoran/palette-generator",
     image: "./palette-generator.webp",
-    tags: [TAGS.REACT, TAGS.TAILWIND],
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.JEST_TESTING],
   },
   {
     title: "Agencia de Marketing",
@@ -98,16 +149,19 @@ const PROJECTS: IProjects[] = [
     link: "https://frontend-marketing-agency-wl1f.vercel.app",
     image: "./marketing-agency-web.webp",
     github: "https://github.com/fernandojosemoran/marketing-agency",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.DJANGO],
+    tags: [TAGS.NEXT, TAGS.DJANGO, TAGS.AWS, TAGS.CLOUD_FLARE],
   },
   {
     title: "Heroes App",
     description:
       "Heroes App allows you to search for Marvel and DC superheroes. Built with Angular, it provides an easy-to-use interface for discovering your favorite heroes from both universes.",
-    link: "https://hero-app-with-mean-stack.onrender.com/",
+    link: detectedProxy(
+      "hero-api-with-express-with-typescript.eastus.cloudapp.azure.com",
+      "https://hero-app-with-mean-stack.onrender.com/"
+    ),
     github: "https://github.com/fernandojosemoran/HeroesApp-Angular",
     image: "./heroes-app.webp",
-    tags: [TAGS.ANGULAR, TAGS.ANGULAR_MATERIAL, TAGS.EXPRESS],
+    tags: [TAGS.ANGULAR, TAGS.ANGULAR_MATERIAL, TAGS.EXPRESS, TAGS.AZURE],
   },
   {
     title: "Sistema de inventario",
@@ -116,7 +170,12 @@ const PROJECTS: IProjects[] = [
     link: "https://simplified-inventory-management.vercel.app/",
     github: "https://github.com/fernandojosemoran/inventory-angular-project",
     image: "./sim.webp",
-    tags: [TAGS.ANGULAR, TAGS.SPRING_BOOT],
+    tags: [
+      TAGS.ANGULAR,
+      TAGS.SPRING_BOOT,
+      TAGS.GOOGLE_CLOUD_PLATFORM,
+      TAGS.CLOUD_FLARE,
+    ],
   },
 ];
 ---
